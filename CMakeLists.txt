@@ -4,9 +4,9 @@ project(mstring)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-)
+# find_package(catkin REQUIRED COMPONENTS
+#   roscpp
+# )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -97,12 +97,12 @@ find_package(catkin REQUIRED COMPONENTS
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
- INCLUDE_DIRS include
-#  LIBRARIES mstring
-#  CATKIN_DEPENDS roscpp
-#  DEPENDS system_lib
-)
+# catkin_package(
+#  INCLUDE_DIRS include
+# #  LIBRARIES mstring
+# #  CATKIN_DEPENDS roscpp
+# #  DEPENDS system_lib
+# )
 
 ###########
 ## Build ##
@@ -113,7 +113,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
 	include
-  ${catkin_INCLUDE_DIRS}
+  # ${catkin_INCLUDE_DIRS}
 )
 
 SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
@@ -122,7 +122,14 @@ SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
 # add_library(mstring
 #   src/${PROJECT_NAME}/mstring.cpp
 # )
-add_library(mstring src/mstring.cpp)
+add_library(mstring 
+	SHARED
+	src/mstring.cpp
+	)
+set(LIB_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/..)
+set(OUTPUT_DIR ${LIB_ROOT}/lib/${PROJECT_NAME})
+set_target_properties(mstring
+	PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_DIR})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries

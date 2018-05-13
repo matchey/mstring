@@ -5,6 +5,8 @@
 // class Mstring{
 // 	// matchey libraries
 // };
+#include <iostream>
+#include <vector>
 
 namespace m
 {

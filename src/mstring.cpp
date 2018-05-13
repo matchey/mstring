@@ -1,5 +1,5 @@
 
-#include <ros/ros.h>
+#include <sstream>
 #include "mstring/mstring.h"
 
 namespace m
