@@ -25,8 +25,8 @@ class string : public std::string
 
 std::vector<std::string> split(const std::string&, char);
 
-#ifndef print
-#define print(var) std::cout << #var " : " << var << std::endl
+#ifndef vprint
+#define vprint(var) std::cout << #var " : " << var << std::endl
 #endif
 
 #endif
